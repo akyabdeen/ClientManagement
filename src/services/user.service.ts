@@ -14,21 +14,19 @@ export class UserService {
         return user;
     } 
 
-    // public createUserClient = async (phone: string, user_id?: number) => {
-    //     if (user_id) {
-    //         const previous_user = await this.user.findOne({where: {id:user_id}, raw: true});
-            
-    //         create_data = {
-    //             ...previous_user,
-    //             phone
-    //         }
-            
-    //         delete create_data.id;
-    //     }
-    //     const user = await this.user.create(create_data);
+    public createUserClient = async (phone: string, user_id?: number) => {
+        let create_data : any = {phone, record: 2};
         
-    //     return user;
-    // } 
+        if (user_id) {
+            const previous_user = await this.user.findOne({where: {id:user_id, record: 2}, raw: true});
+            
+            await this.user.update({record:3}, {where: {id: user_id}});
+        }
+
+        const user = await this.user.create(create_data);
+        
+        return user;
+    } 
 
     public findClientByPhone = async (phone: string) => {
         const user = await this.user.findOne({where: {phone}, raw: true});

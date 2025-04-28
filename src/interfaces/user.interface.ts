@@ -4,4 +4,5 @@ export interface UserInterface {
     username: string | null;
     password: string | null;
     user_type: number;
+    record: number;
 }

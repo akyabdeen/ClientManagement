@@ -9,6 +9,7 @@ export class UserModel extends Model<UserInterface, UserCreationAttributes> impl
     public username: string;
     public password: string;
     public user_type: number;
+    public record: number;
 }
 
 export default function (sequelize: Sequelize): typeof UserModel {
@@ -25,13 +26,18 @@ export default function (sequelize: Sequelize): typeof UserModel {
             },
             username: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                // allowNull: false,
             },
             password: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                // allowNull: false,
             },
             user_type: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                defaultValue: 2
+            },
+            record: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 defaultValue: 2

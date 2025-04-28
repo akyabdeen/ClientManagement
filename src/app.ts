@@ -37,7 +37,7 @@ export class App {
 
     private initializeMiddlewares() {
         this.app.use(express.json());
-        this.app.use(cors({origin: '*', credentials: true}));
+        this.app.use(cors({origin: 'http://localhost:3001', credentials: true}));
         this.app.use(cookieParser());
     }
 

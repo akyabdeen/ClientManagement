@@ -46,7 +46,7 @@ export default function (sequelize: Sequelize): typeof ClientModel {
             },
             notes: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                // allowNull: false,
             },
             status: {
                 type: DataTypes.INTEGER,
