@@ -16,7 +16,8 @@ export class AuthController {
             if (!username || !password) throw new HttpException(400, 'Please provide a valid username and password');
 
             const {cookie, token} = await this.auth_service.login(username, password);
-
+            
+            res.setHeader('Set-Cookie', cookie);
             res.status(200).json({token, message: 'login'});
         } catch (error) {
             next(error)

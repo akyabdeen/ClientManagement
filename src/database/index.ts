@@ -1,6 +1,8 @@
 import Sequelize from 'sequelize';
 import { DB_DATABASE, DB_USER, DB_PASSWORD, DB_HOST } from '../config';
 import UserModel from '../models/user.model';
+import ClientModel from '../models/client.model';
+import ClientStatusModel from '../models/client_status.model';
 
 const sequelize = new Sequelize.Sequelize(
     DB_DATABASE || 'default_database',
@@ -28,5 +30,7 @@ sequelize.authenticate();
 
 export const DB = {
     User: UserModel(sequelize),
+    Client: ClientModel(sequelize),
+    ClientStatus: ClientStatusModel(sequelize),
     sequelize
 }
